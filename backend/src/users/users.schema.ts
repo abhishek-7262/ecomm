@@ -18,7 +18,10 @@ export class User {
     })
     email: string;
 
-    @Prop({ index: true })
+    @Prop({ required: true })
+    password: string;
+
+    @Prop()
     city: string;
 };
 

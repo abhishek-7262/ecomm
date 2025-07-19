@@ -31,7 +31,10 @@ let UsersService = class UsersService {
         const user = new this.UserModel(userDto);
         return user.save();
     }
-    async findUser() { }
+    async findUser(email) {
+        const user = await this.UserModel.findOne({ email });
+        return user;
+    }
     async findAllUser() {
         return this.UserModel.find().exec();
     }

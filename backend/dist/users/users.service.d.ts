@@ -4,6 +4,6 @@ export declare class UsersService {
     private UserModel;
     constructor(UserModel: Model<userDocument>);
     create(userDto: Partial<User>): Promise<User>;
-    findUser(): Promise<void>;
+    findUser(email: string): Promise<User | null>;
     findAllUser(): Promise<User[]>;
 }

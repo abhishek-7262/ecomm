@@ -21,7 +21,11 @@ export class UsersService {
         return user.save()
     }
 
-    async findUser() { }
+    async findUser(email: string): Promise<User | null> {
+        const user = await this.UserModel.findOne({ email })
+
+        return user
+    }
 
     async findAllUser(): Promise<User[]> {
         return this.UserModel.find().exec()
