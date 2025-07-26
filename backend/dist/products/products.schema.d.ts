@@ -1,9 +1,11 @@
 import { Document, Types } from "mongoose";
 export type ProductDocument = Product & Document;
 export declare class Variant {
-    name: string;
-    sku: string;
-    price?: number;
+    variantId: string;
+    color: string;
+    size: string;
+    price: number;
+    stock: number;
 }
 export declare const VariantSchema: import("mongoose").Schema<Variant, import("mongoose").Model<Variant, any, any, any, Document<unknown, any, Variant, any> & Variant & {
     _id: Types.ObjectId;

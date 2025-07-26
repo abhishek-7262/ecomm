@@ -25,15 +25,15 @@ let ProductsService = class ProductsService {
     }
     async create(productDto) {
         if (productDto.variants && productDto.variants.length) {
-            const seenSkus = new Set();
+            const seenVariantIds = new Set();
             productDto.variants = productDto.variants.map((variant, i) => {
-                if (!variant.sku) {
-                    variant.sku = `sku-${Date.now()}-${i}`;
+                if (!variant.variantId) {
+                    variant.variantId = `v-${Date.now()}-${i}`;
                 }
-                if (seenSkus.has(variant.sku)) {
-                    variant.sku = `${variant.sku}-${Math.floor(Math.random() * 10000)}`;
+                if (seenVariantIds.has(variant.variantId)) {
+                    variant.variantId = `${variant.variantId}-${Math.floor(Math.random() * 10000)}`;
                 }
-                seenSkus.add(variant.sku);
+                seenVariantIds.add(variant.variantId);
                 return variant;
             });
         }

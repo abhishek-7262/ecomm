@@ -12,25 +12,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductSchema = exports.Product = exports.VariantSchema = exports.Variant = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 let Variant = class Variant {
-    name;
-    sku;
+    variantId;
+    color;
+    size;
     price;
+    stock;
 };
 exports.Variant = Variant;
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Variant.prototype, "name", void 0);
+], Variant.prototype, "variantId", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ unique: true, sparse: true }),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Variant.prototype, "sku", void 0);
+], Variant.prototype, "color", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Variant.prototype, "size", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", Number)
 ], Variant.prototype, "price", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", Number)
+], Variant.prototype, "stock", void 0);
 exports.Variant = Variant = __decorate([
-    (0, mongoose_1.Schema)()
+    (0, mongoose_1.Schema)({ _id: false })
 ], Variant);
 exports.VariantSchema = mongoose_1.SchemaFactory.createForClass(Variant);
 let Product = class Product {
@@ -70,5 +80,5 @@ exports.Product = Product = __decorate([
     (0, mongoose_1.Schema)()
 ], Product);
 exports.ProductSchema = mongoose_1.SchemaFactory.createForClass(Product);
-exports.ProductSchema.index({ 'variants.sku': 1 }, { unique: true, sparse: true });
+exports.ProductSchema.index({ 'variants.variantId': 1 }, { unique: true, sparse: true });
 //# sourceMappingURL=products.schema.js.map

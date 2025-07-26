@@ -3,23 +3,28 @@ import { Document, Types } from "mongoose";
 
 export type ProductDocument = Product & Document;
 
-@Schema()
+@Schema({ _id: false }) // We’ll use `variantId` as a manual ID
 export class Variant {
     @Prop({ required: true })
-    name: string;
+    variantId: string; // Custom ID (you can also auto-generate this with UUID or ObjectId)
 
-    @Prop({ unique: true, sparse: true }) // Make SKU unique, but sparse (allow null/missing)
-    sku: string;
+    @Prop({ required: true })
+    color: string;
 
-    @Prop()
-    price?: number; // Optional variant-specific price
+    @Prop({ required: true })
+    size: string;
+
+    @Prop({ required: true })
+    price: number;
+
+    @Prop({ required: true })
+    stock: number;
 }
 
 export const VariantSchema = SchemaFactory.createForClass(Variant);
 
 @Schema()
 export class Product {
-
     @Prop({ required: true })
     name: string;
 
@@ -41,5 +46,5 @@ export class Product {
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
 
-// Create a unique sparse index on variants.sku to avoid errors on null/undefined SKUs
-ProductSchema.index({ 'variants.sku': 1 }, { unique: true, sparse: true });
+// Optional: Index variantId if needed
+ProductSchema.index({ 'variants.variantId': 1 }, { unique: true, sparse: true });

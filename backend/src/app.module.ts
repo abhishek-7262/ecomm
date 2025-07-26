@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
 import { AddToCartModule } from './add-to-cart/add-to-cart.module';
-import { AddtoCartService } from './addto-cart/addto-cart.service';
+import { AddToCartService } from './add-to-cart/add-to-cart.service';
 
 @Module({
   imports: [
@@ -35,6 +35,6 @@ import { AddtoCartService } from './addto-cart/addto-cart.service';
     AddToCartModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AddtoCartService],
+  providers: [AppService, AddToCartService],
 })
 export class AppModule { }
