@@ -21,7 +21,7 @@ let AuthController = class AuthController {
         this.authService = authService;
     }
     async login(body) {
-        const user = await this.authService.validateUser(body.userName, body.password);
+        const user = await this.authService.validateUser(body.email, body.password);
         if (!user) {
             return { message: "Invalid credentails" };
         }

@@ -6,6 +6,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
+import { AddToCartModule } from './add-to-cart/add-to-cart.module';
+import { AddtoCartService } from './addto-cart/addto-cart.service';
 
 @Module({
   imports: [
@@ -30,8 +32,9 @@ import { AuthModule } from './auth/auth.module';
     UsersModule,
     ProductsModule,
     AuthModule,
+    AddToCartModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AddtoCartService],
 })
 export class AppModule { }
