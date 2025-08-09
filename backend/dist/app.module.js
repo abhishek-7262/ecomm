@@ -16,7 +16,6 @@ const mongoose_1 = require("@nestjs/mongoose");
 const products_module_1 = require("./products/products.module");
 const auth_module_1 = require("./auth/auth.module");
 const add_to_cart_module_1 = require("./add-to-cart/add-to-cart.module");
-const add_to_cart_service_1 = require("./add-to-cart/add-to-cart.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -44,7 +43,7 @@ exports.AppModule = AppModule = __decorate([
             add_to_cart_module_1.AddToCartModule,
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, add_to_cart_service_1.AddToCartService],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

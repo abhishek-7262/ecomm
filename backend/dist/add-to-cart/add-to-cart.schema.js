@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddToCart = void 0;
+exports.AddToCartSchema = exports.AddToCart = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 let AddToCart = class AddToCart {
     userId;
     productId;
+    variantId;
+    quantity;
 };
 exports.AddToCart = AddToCart;
 __decorate([
@@ -21,10 +23,20 @@ __decorate([
     __metadata("design:type", String)
 ], AddToCart.prototype, "userId", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], AddToCart.prototype, "productId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], AddToCart.prototype, "variantId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], AddToCart.prototype, "quantity", void 0);
 exports.AddToCart = AddToCart = __decorate([
     (0, mongoose_1.Schema)()
 ], AddToCart);
+exports.AddToCartSchema = mongoose_1.SchemaFactory.createForClass(AddToCart);
+exports.AddToCartSchema.set('timestamps', true);
 //# sourceMappingURL=add-to-cart.schema.js.map
